@@ -1,0 +1,30 @@
+Reference-to-video from a storyboard image. Generate one continuous natural 10-second video, not a slideshow.
+
+Scene:
+2030 FIFA World Cup group stage, China vs Brazil, 60th minute, score 1-1. Ultra-realistic live sports TV broadcast fan-cam. Preserve the reference image's main adult fan identity, hairstyle, outfit colors, face sticker, stadium crowd atmosphere, broadcast colors, and scoreboard style.
+
+Style:
+photorealistic, ultra realistic live sports broadcast, professional TV camera footage, realistic stadium lighting, natural crowd movement, shallow depth of field, authentic fan cam moment, realistic skin texture, natural facial expressions, real broadcast color grading.
+
+Fixed overlay:
+Keep a realistic scoreboard in the top right throughout:
+FIFA WORLD CUP 2030 - GROUP STAGE
+CHN 1 - 1 BRA
+The clock advances naturally from 60:18 to 60:28. Score stays 1-1.
+
+Action:
+0-1s wide establishing shot across packed World Cup stands.
+1-2s camera pushes in through the stands and finds the featured fan.
+2-3s natural broadcast cut to the main fan, focused on the match.
+3-4s she notices the camera and begins smiling.
+4-5s warm natural smile, medium close-up.
+5-6s she gently waves.
+6-7s she gives a flying kiss.
+7-8s flying kiss continues smoothly.
+8-10s she makes a two-hand heart gesture and nods softly.
+
+Motion order:
+watching match -> noticing camera -> smiling -> waving -> flying kiss -> two-hand heart.
+
+Negative:
+No animation, no cartoon, no AI look, no plastic skin, no face change, no underage look, no sexualization, no extra fingers, no deformed hands, no wrong score, no garbled text, no missing scoreboard, no sudden scene change.

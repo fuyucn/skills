@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment variables - NEVER commit API keys
+.env
+*.env.local
+
+# Generated outputs
+grok-video/outputs/
+grok-video/prompts/*.txt
+!grok-video/prompts/*.example.txt
+
+# Vendor skills (installed from external sources, not maintained here)
+huashu-nuwa/
+
+# Temp files
+*.log
+.DS_Store
+Thumbs.db

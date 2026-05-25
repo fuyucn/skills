@@ -1,0 +1,31 @@
+{
+  "name": "grok-video-workflow",
+  "version": "0.1.0",
+  "description": "A small CLI workflow for generating Grok Imagine videos through the xAI API, with polling, downloads, reference images, and frame review.",
+  "type": "module",
+  "bin": {
+    "grok-video": "./src/grok-video.mjs",
+    "grok-review": "./src/review-video.mjs"
+  },
+  "scripts": {
+    "video": "node ./src/grok-video.mjs",
+    "review": "node ./src/review-video.mjs",
+    "check": "node ./src/grok-video.mjs --help && node ./src/review-video.mjs --help"
+  },
+  "keywords": [
+    "grok",
+    "xai",
+    "video-generation",
+    "reference-to-video",
+    "codex",
+    "ai-video"
+  ],
+  "author": "Rion-Wu-tech",
+  "license": "MIT",
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
