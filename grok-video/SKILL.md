@@ -16,14 +16,8 @@ description: |
 ## 环境准备（首次使用）
 
 ```bash
-# 1. 进入 skill 目录
 cd D:/animiated-png/skills/.agents/skills/grok-video
-
-# 2. 复制 .env 并填入 API Key
-cp .env.example .env
-# 编辑 .env，填入：XAI_API_KEY=your-xai-api-key
-
-# 3. 安装依赖（已安装可跳过）
+cp .env.example .env   # 填入 XAI_API_KEY
 npm install
 ```
 
@@ -34,22 +28,12 @@ npm install
 ## 完整工作流
 
 ```
-Step 1：确认需求
-    ↓
-Step 2：增强提示词
-    ↓
-Step 3：确认参数
-    ↓
-Step 4：运行 CLI 生成视频
-    ↓
-Step 5：抽帧审查 → 判断是否重跑
+Step 1：确认需求 → Step 2：增强提示词 → Step 3：确认参数 → Step 4：运行 CLI → Step 5：抽帧审查
 ```
 
 ---
 
 ## Step 1：需求确认
-
-收到用户请求后，依次确认以下信息：
 
 | 问题 | 默认值 | 说明 |
 |------|--------|------|
@@ -60,7 +44,7 @@ Step 5：抽帧审查 → 判断是否重跑
 | 分辨率 | 480p | 480p（$0.05/秒）或 720p（$0.07/秒） |
 | 输出文件前缀 | grok-video | 方便识别的文件名前缀 |
 
-**快速确认模板**（如用户信息不完整时使用）：
+**快速确认模板**：
 
 ```
 我来确认几个参数：
@@ -74,14 +58,6 @@ Step 5：抽帧审查 → 判断是否重跑
 
 ## Step 2：提示词增强
 
-### 判断是否需要增强
-
-| 用户输入 | 处理 |
-|---------|------|
-| 一句话描述（如"两人接吻"） | 需要完整增强 |
-| 已有详细提示词 | 检查结构，补充缺失部分 |
-| 英文提示词 | 检查是否在4096字符内 |
-
 ### 提示词结构模板
 
 ```
@@ -92,15 +68,6 @@ Step 5：抽帧审查 → 判断是否重跑
 [光线与氛围]
 [画面风格]
 [负向约束]
-```
-
-### 动作时间线写法
-
-```
-0-1s: [起始画面，建立场景]
-1-3s: [主要动作展开]
-3-4s: [情绪/动作高峰]
-4-5s: [结尾画面，情绪收束]
 ```
 
 ### 参考图生视频：身份保留写法
@@ -120,39 +87,22 @@ Do not change the subject's face or replace them with a different person.
 | 暴露、裸露 | tasteful styling, natural and dignified |
 | 床上亲密 | cozy indoor setting, warm ambient light |
 
-### 4096字符检查
-
-提示词完成后，告知字符数：
-```
-当前提示词：XXX 字符 / 4096 上限
-```
-
-若超出，压缩策略：
-1. 合并相邻时间段的描述
-2. 删除重复的风格词
-3. 负向约束合并为一行
+提示词完成后确认字符数（上限4096）。若超出，合并相邻时间段 / 删除重复风格词 / 负向约束合并为一行。
 
 ---
 
 ## Step 3：参数确认与成本预估
-
-生成命令前，输出确认单：
 
 ```
 生成参数确认：
 ─────────────────────────────
 模式：参考图生视频 / 文生视频
 参考图：[路径] × N张
-时长：Xs
-比例：X:X
-分辨率：Xp
-预估费用：$X.XX
-输出前缀：xxx
+时长：Xs | 比例：X:X | 分辨率：Xp
+预估费用：$X.XX | 输出前缀：xxx
 ─────────────────────────────
 确认运行？
 ```
-
-**成本参考**：
 
 | 时长 | 480p | 720p |
 |------|------|------|
@@ -163,8 +113,6 @@ Do not change the subject's face or replace them with a different person.
 
 ## Step 4：运行 CLI
 
-**工作目录必须在 skill 目录下**：
-
 ```bash
 cd D:/animiated-png/skills/.agents/skills/grok-video
 ```
@@ -174,10 +122,7 @@ cd D:/animiated-png/skills/.agents/skills/grok-video
 ```bash
 npm run video -- \
   --prompt "your enhanced prompt" \
-  --duration 5 \
-  --aspect-ratio 9:16 \
-  --resolution 480p \
-  --prefix my-video
+  --duration 5 --aspect-ratio 9:16 --resolution 480p --prefix my-video
 ```
 
 ### 参考图生视频（单图）
@@ -186,10 +131,7 @@ npm run video -- \
 npm run video -- \
   --prompt-file prompts/my-prompt.txt \
   --reference-image "path/to/reference.png" \
-  --duration 5 \
-  --aspect-ratio 9:16 \
-  --resolution 480p \
-  --prefix my-video
+  --duration 5 --aspect-ratio 9:16 --resolution 480p --prefix my-video
 ```
 
 ### 参考图生视频（多图，最多7张）
@@ -199,34 +141,16 @@ npm run video -- \
   --prompt-file prompts/my-prompt.txt \
   --reference-image "path/to/ref1.png" \
   --reference-image "path/to/ref2.png" \
-  --duration 10 \
-  --aspect-ratio 9:16 \
-  --resolution 720p \
-  --prefix my-video
+  --duration 10 --aspect-ratio 9:16 --resolution 720p --prefix my-video
 ```
 
 ### 续传已有 request（网络中断恢复）
 
 ```bash
-npm run video -- \
-  --request-id <request_id> \
-  --prefix my-video
+npm run video -- --request-id <request_id> --prefix my-video
 ```
 
-**CLI 输出说明**：
-
-```
-model: grok-imagine-video
-estimated_cost_usd: 0.25 (5s 480p)
-reference_images: 1
-request_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   ← 保存此ID，网络中断可续传
-status: pending
-status: pending
-status: done
-video_url: https://vidgen.x.ai/...
-saved_video: outputs/my-video-xxx.mp4
-metadata: outputs/my-video-xxx.json
-```
+> 保存 CLI 输出的 `request_id`，网络中断时可用 `--request-id` 续传，否则需重新付费。
 
 ---
 
@@ -236,8 +160,6 @@ metadata: outputs/my-video-xxx.json
 npm run review -- --video outputs/my-video-xxx.mp4
 ```
 
-生成抽帧图后，逐项检查：
-
 | 检查项 | 通过标准 |
 |--------|---------|
 | 动作连贯性 | 无跳帧，动作自然过渡 |
@@ -246,92 +168,24 @@ npm run review -- --video outputs/my-video-xxx.mp4
 | 文字/字幕 | 无乱码，无意外文字 |
 | 场景跳变 | 无突然场景切换 |
 
-### 判断结果
-
-**通过** → 直接给用户视频路径
-
-**部分问题** → 调整提示词后重跑：
+**部分问题修复方向**：
 - 动作不连贯 → 细化时间线，每1-2秒一个动作节点
 - 换脸/脸漂移 → 加强身份保留描述，补充参考图
 - 镜头静止 → 加入镜头运动指令（slow push-in / gentle pan）
-- 黑边 → 检查参考图比例是否匹配目标比例
-
-**失败** → 完整重写提示词
+- 黑边 → 参考图比例与目标比例不一致，使用前先裁剪
 
 ---
 
-## 完整示例
+## Gotchas
 
-### 示例1：参考图浪漫场景
+- **加外貌文字描述反而更不像**：提示词中写 P1/P2 具体外貌（发型、眼形等）会和参考图竞争，脸漂移更严重。直接用「Preserve each person's facial identity」，不要描述具体五官。
+- **分镜图作为参考图 → 二次漂移**：GPT Image 2 生成分镜图时人脸已漂移一次，再喂给 Grok 产生双重漂移。分镜图只用于预览，不传入 Grok。
+- **竖版参考图 + 横版视频 → 黑边**：参考图比例和目标视频比例不一致时出现黑边。使用前先裁剪到目标比例（16:9 横版）。
+- **提示词超4096字符报错**：使用 `--prompt-file` 时必须检查字符数，超限直接报错。
+- **中断后丢失 request_id**：CLI 输出的 `request_id` 须立即保存，否则网络中断后需重新付费生成。
 
-**用户输入**：参考图是情侣合照，生成两人接吻的5秒视频，9:16
-
-**Step 2 增强后提示词**（保存为 prompts/romance.txt）：
-
-```
-A cinematic 5-second vertical romantic scene. Two adults from the reference image share a tender, intimate kiss.
-
-Opening (0-1s): The couple stands close together in warm golden light, cozy indoor setting, blurred background. Faces close, eyes softly closing, a moment of quiet anticipation.
-
-Action (1-3s): Slow, gentle movement as they naturally lean toward each other. Lips meeting softly, eyes closed, emotionally resonant.
-
-Close (3-5s): Slow pull-back to medium shot, warm bokeh background, emotional and cinematic ending frame.
-
-Camera: Slow push-in from medium to close-up. Shallow depth of field, gentle handheld warmth.
-
-Lighting: Warm golden hour or soft indoor ambient light. Gentle rim light on hair and shoulders.
-
-Style: Cinematic portrait, real photography feel, shallow depth of field, film grain, warm golden tones.
-
-Negative: No AI plastic feel, no text overlays, no underage look, no explicit content, no deformed hands.
-
-Both subjects are clearly adults. The interaction is natural, consensual, and emotionally expressive.
-```
-
-**Step 3 运行命令**：
-
-```bash
-cd D:/animiated-png/skills/.agents/skills/grok-video
-npm run video -- \
-  --prompt-file prompts/romance.txt \
-  --reference-image "path/to/couple.png" \
-  --duration 5 \
-  --aspect-ratio 9:16 \
-  --resolution 480p \
-  --prefix romance
-```
-
----
-
-### 示例2：纯文生视频
-
-```bash
-npm run video -- \
-  --prompt "A cinematic vertical social media clip. A young woman walks through a neon-lit Tokyo street at night, slow motion, shallow depth of field, warm street lights reflecting on wet pavement, cinematic film grain, 9:16 vertical format." \
-  --duration 5 \
-  --aspect-ratio 9:16 \
-  --resolution 480p \
-  --prefix tokyo-night
-```
-
----
-
-## CLI 完整参数表
-
-| 参数 | 说明 | 默认值 |
-|------|------|--------|
-| `--prompt` | 直接输入提示词文本 | — |
-| `--prompt-file` | 从文件读取提示词 | — |
-| `--reference-image` | 参考图路径或HTTPS URL，可重复最多7次 | — |
-| `--duration` | 时长秒数（参考图最长10秒） | 5 |
-| `--aspect-ratio` | 16:9 / 9:16 / 1:1 / 4:3 / 3:4 / 3:2 / 2:3 | 16:9 |
-| `--resolution` | 480p 或 720p | 480p |
-| `--prefix` | 输出文件名前缀 | grok-video |
-| `--output-dir` | 输出目录 | outputs |
-| `--request-id` | 续传已有请求 | — |
-| `--no-download` | 只输出URL不下载 | — |
-| `--poll-interval` | 轮询间隔秒数 | 5 |
-| `--timeout-minutes` | 超时分钟数 | 20 |
+> 完整 CLI 参数表 → 读取 `references/cli-params.md`
+> 完整示例提示词 → 读取 `references/prompt-examples.md`
 
 ---
 
