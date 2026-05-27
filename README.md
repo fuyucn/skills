@@ -25,6 +25,7 @@ npx skills add https://github.com/fuyucn/skills.git@image-prompt-master -y -g
 | [storyboard-to-video](./storyboard-to-video/) | Full AI video production pipeline: script → storyboard → video |
 | [grok-video](./grok-video/) | Grok xAI video generation CLI with contact sheet review |
 | [seedance2](./seedance2/) | 即梦 Seedance 2.0 多模态视频提示词专家，含@引用语法、首尾帧、运镜复刻 |
+| [prompt-formatter](./prompt-formatter/) | AI 提示词格式优化器——诊断 + 重构，节省 token，提升关键约束权重 |
 
 ## grok-video Setup
 
