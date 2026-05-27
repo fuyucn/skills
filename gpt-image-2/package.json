@@ -1,0 +1,19 @@
+{
+  "name": "gpt-image-2-generator",
+  "version": "1.0.0",
+  "description": "Generate images with GPT Image 2 through a third-party Token Hub proxy.",
+  "type": "module",
+  "scripts": {
+    "generate": "node ./src/generate.mjs"
+  },
+  "keywords": [
+    "gpt-image-2",
+    "openai",
+    "image-generation",
+    "token-hub"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
