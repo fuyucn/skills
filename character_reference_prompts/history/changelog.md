@@ -1,5 +1,18 @@
 # Changelog
 
+## v2.0.8 - 2026-08-15
+
+### 修改内容
+- 新增「表情克制 / Expression Stability」规则：表情只允许同一张脸上的肌肉张力变化，禁止重塑、拉伸五官。
+- 将 `Same face, new expression` 收紧为 `Same face, same facial structure`，明确表情幅度必须小幅、自然。
+- 强表情（大笑、张嘴笑）统一改写为 light / gentle 版本，禁止 exaggerated laugh / big grin / extreme mouth opening。
+- Avoid 增加五官变形保护：deformed mouth / distorted smile / misshapen eyes / stretched jaw / extra teeth。
+- Failure Repair 增加「表情崩坏 / 五官变形」修复句。
+- 更新单人/双人 Canonical Template、Expression Terms 与 Final Quality Standard。
+
+### 修改原因
+2.0.7 放开表情后，模型为了生成大笑等动态表情会重新排布面部肌肉，导致嘴、眼、下巴结构崩坏。需要同时保证表情自然和五官稳定。
+
 ## v2.0.7 - 2026-08-15
 
 ### 修改内容
