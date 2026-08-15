@@ -20,7 +20,7 @@ npx skills add https://github.com/fuyucn/skills.git@image-prompt-master -y -g
 |-------|-------------|
 | [image-prompt-master](./image-prompt-master/) | GPT Image 2 prompt optimization — aesthetic words replace desire words |
 | [ref-to-image](./ref-to-image/) | Generate new images from P1/P2 reference photos with identity anchors |
-| [character-reference-prompts](./character_reference_prompts/) | 参考图人物生图提示词完整规范（2.0.6 + 全部历史版本） |
+| [character-reference-prompts](./character_reference_prompts/) | 参考图人物生图提示词完整规范（2.0.7 + 全部历史版本） |
 | [ref-image-compliance-prompt-master](./ref-image-compliance-prompt-master/) | Rewrite rejected prompts into platform-safe versions |
 | [ref-to-storyboard](./ref-to-storyboard/) | Reference photos + story outline → storyboard → Grok video |
 | [storyboard-to-video](./storyboard-to-video/) | Full AI video production pipeline: script → storyboard → video |

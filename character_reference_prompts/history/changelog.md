@@ -1,5 +1,18 @@
 # Changelog
 
+## v2.0.7 - 2026-08-15
+
+### 修改内容
+- 新增「Expression Freedom / 表情解冻」规则：身份锁定只针对静态面部结构（骨相、五官、脸型、皮肤、年龄感、痣），表情、视线、头部角度由新场景重新生成。
+- 删除 `expression consistent with the reference image` 默认写法，改为场景自然表情。
+- Main Prompt 增加表情解冻标准句：Same face, new expression。
+- Avoid 增加：不复制参考图表情、头部角度、视线；不冻结面部、不僵硬微笑。
+- Failure Repair 增加「表情僵硬 / 复制参考图表情」修复句。
+- 更新单人/双人 Canonical Template 与 Final Quality Standard。
+
+### 修改原因
+2.0.6 身份锁定语言过强，模型在保持人脸一致时把参考图表情一起锁死，导致新图表情僵硬、笑得不自然。
+
 v1.2
 - 将原先偏“古风”定向的描述改为通用参考图人像生成模板，适配更多场景。
 - 强化“人物身份一致性优先”的原则，明确脸型、五官比例、眉眼关系、年龄感、气质等必须优先保留。
