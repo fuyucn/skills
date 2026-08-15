@@ -1,0 +1,49 @@
+他们坐下，她的身体放松，目光平静望向镜头，嘴角带着若有若无的浅笑。
+
+## 1. 一键复制完整提示词
+
+```markdown
+# Complete Image Generation Prompt
+
+## Main Prompt
+
+Use the provided reference image as the strict identity reference. Generate the same adult person from the reference image. Do not create a new face from the text prompt. The reference image defines the person's identity; the text prompt only controls the scene, styling, pose, lighting, composition, and visual style.
+
+A cinematic filmic personal travel vlog portrait. Blue hour on a town rooftop at dusk — the subject's secret hideaway. They sit hugging their knees, looking into the distance, wind blowing through their hair. Heavy and slow movements, a sense of exhaustion. No dialogue — only breathing sounds and natural chest rise and fall.
+
+Lonely,文艺 film-like atmosphere. Contemplating stillness, not escape. Heavy emotional weight expressed through body language alone — slow, tired, quiet.
+
+Camera: ARRI Alexa Mini LF with Cooke Panchro/i Classic Prime Lenses. 1/4 or 1/8 Black Pro-Mist filter. 10bit 422 sampling, open gate. Focal lengths: 35mm, 50mm, 85mm. Aperture: T2.0-T2.8. 4:3 aspect ratio.
+
+Handheld natural camera movement with organic shake and breathing motion. Cutting between shots.
+
+Color: Kodak Portra 400 film stock. Teal and warm amber tones — slightly green-shifted warm tone. Film grain, analog texture.
+
+No music, no subtitles, no dialogue. Pure natural sound implied through visual breathing.
+
+A tiny subtle cursive script signature "hypn" in the lower right corner of the frame, exactly match the continuous flowing handwritten flourished script font reference: long extended sweeping tails on the initial h and final n, connected single-stroke cursive calligraphy, delicate thin stroke weight, elegant looping flourishes on letters h and p.
+
+Extremely small — no larger than a fingerprint in the frame, less than 1-2% of the image height. Very unobtrusive, low semi-transparent light gray tone matching the brightness of the lower right area, no pure black, no bright white. Blends naturally into the corner like a faint engraved stamp, invisible at first glance, only visible on close inspection.
+
+Strictly fixed placement only at lower right corner, not centered, not large, not overlapping subject. Zero other text, labels or marks anywhere on canvas.
+
+This prompt is designed for use with a reference image. The uploaded reference image is the sole identity source — keep the same face, do not redesign or replace the person.
+
+## Avoid / Negative Instructions
+
+Do not generate a different person. Do not change the face. Do not redesign the facial identity. Do not replace the subject with a generic model. Do not make them unrecognizable from the reference image.
+
+Do not turn the face into a generic beauty face, influencer face, template face, or fashion model face. Do not over-beautify or heavily retouch the face.
+
+Avoid plastic skin, waxy skin, over-smoothed skin, airbrushed skin, loss of natural skin texture. Avoid distorted face, blurry face, face too small, bad eyes, bad hands, deformed hands, extra fingers, missing fingers, broken anatomy, distorted body.
+
+Avoid bright daylight, golden hour warmth, flat video lighting, studio lighting, hard flash. Avoid music, subtitles, dialogue, voiceover, text overlay, lyrics.
+
+Avoid cartoon, anime, illustration, painting, 3D render, CGI. Avoid low resolution, heavy noise, artifacts, watermark, logo, caption, username, and random text.
+
+No generic serif font, no block font, no bold strokes, no disconnected letters, no short plain tails, no thick heavy script.
+
+No watermark, no logo, no large caption, no username, no bright white text, no centered text, no prominent label, no random text, no multiple text elements, no signature placed anywhere other than lower right corner.
+
+Critical size restriction: Do not enlarge the signature. It must be extremely small — smaller than a watermark, smaller than a typical logo, less than 2% of the frame height. Do not make it opaque, do not place it over the subject, do not place it on bright highlights or light areas. If in doubt about size, make it smaller.
+```

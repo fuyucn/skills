@@ -1,4 +1,4 @@
-# 失败修复提示词
+﻿# 失败修复提示词
 
 > 读取条件：生成结果出现问题时。
 
@@ -7,19 +7,19 @@
 ## 不像参考人物
 
 ```
-问题：生成结果不像参考人物，或只是相似但不是本人。
+Repair mode — strict face preservation:
+Use my uploaded portrait photo as the only identity reference.
 
-请重新生成。最高优先级是身份一致性。
-参考图人物必须是同一位真实人物，不是相似人物、替代人物或重新设计的人脸。
+Do not create a new person. Do not replace me with a similar-looking person.
+Do not beautify me into someone else.
+Target facial similarity: 95-100%.
 
-请更严格保留参考图人物的脸型轮廓、头颅比例、发际线、五官位置与比例、
-眉形与眉眼距离、眼睛形状与眼距、鼻梁与鼻头、唇形与厚薄、
-下颌线、颧骨结构、肤色类型、面部骨相、年龄感、自然轻微不对称和整体真实辨识度。
+Preserve the same eyes, nose, lips, jawline, cheekbones, forehead,
+face shape, facial proportions, skin tone, age impression,
+visible ethnic appearance features, natural skin texture, and recognizable identity.
 
-降低风格化、美化、滤镜和模板脸倾向。
-不要美化成另一张脸，不要网红化，不要模板化，不要混血化，
-不要改变面部比例，不要改变肤色类型，不要改变年龄感。
-脸部必须清晰可见、无遮挡、不过度侧脸、不过远。
+Reduce stylization, beautification, filters, and template face tendencies.
+Face must be clearly visible, unobstructed, not in strong profile, not too far.
 ```
 
 ---
@@ -27,17 +27,21 @@
 ## 单人身份漂移
 
 ```
-问题：[P1] 生成成陌生人脸、泛化美颜脸或模板脸。
+Repair mode — identity restoration:
+[P1] must be the same real person from reference image 1, not a similar-looking person.
 
-请重新生成，并将 [P1] 的身份作为最高优先级。
-[P1] 必须是第1张参考图中的同一位真实人物，不是相似人物。
+Use the uploaded portrait photo as the only identity reference.
+Do not create a new person. Target facial similarity: 95-100%.
 
-请保留 [P1] 的脸型轮廓、头颅比例、发际线、五官比例、眉眼关系、
-眼睛形状、鼻梁与鼻头、唇形、下颌线、颧骨结构、肤色类型、
-面部骨相、年龄感和自然轻微不对称。
+Preserve face shape, skull proportions, hairline, brow relationship,
+eye shape and spacing, nose bridge and tip, lip morphology,
+jawline, chin line, cheekbone structure, forehead, skin tone type,
+facial bone structure, age impression, subtle natural asymmetry,
+natural skin texture, and overall personal vibe.
 
-不要生成 AI 网红脸、模板化流行审美脸、偶像脸、娃娃脸、动漫脸、
-过度对称脸、塑料皮肤或与参考图不同的身份。
+Do not generate AI influencer face, template beauty face, idol face,
+doll face, anime face, overly symmetrical face, plastic skin,
+or a different identity from the reference photo.
 ```
 
 ---
@@ -45,20 +49,18 @@
 ## P1/P2 面孔混淆
 
 ```
-问题：P1/P2 面孔混淆、换脸、融合脸或站位错误。
+Repair mode — identity isolation:
+[P1]''s identity comes only from reference image 1.
+[P2]''s identity comes only from reference image 2.
 
-请重新生成，并严格隔离身份来源：
-[P1] 的身份只能来自第1张参考图。
-[P2] 的身份只能来自第2张参考图。
+[P1] must be the same real person from reference image 1.
+[P2] must be the same real person from reference image 2.
 
-[P1] 必须是第1张参考图中的同一位真实人物。
-[P2] 必须是第2张参考图中的同一位真实人物。
-
-不要交换两人的脸、发型、服装、站位、身体、表情或面部朝向。
-不要融合两个人的五官。
-不要生成介于 P1 和 P2 之间的融合脸。
-不要让两个人变成相似脸、模板脸或同一张脸的变体。
-两人脸部都必须清晰可见、无遮挡、不过度侧脸、不过远。
+Do not swap anyone''s face, hairstyle, clothing, position, body, expression, or facing direction.
+Do not create a blended face.
+Do not generate a blended face between P1 and P2.
+Do not let two people become similar-looking faces, template faces, or variants of the same face.
+Both faces must be clearly visible, unobstructed, not in strong profile, not too far.
 ```
 
 ---
@@ -66,22 +68,21 @@
 ## 多人 P1/P2/P3 身份混淆
 
 ```
-问题：多人图中 P1/P2/P3 身份混淆、互换、融合或相似化。
-
-请重新生成。最高优先级是多人身份一致性。
+Repair mode — multi-person identity isolation:
+最高优先级是多人身份一致性。
 每个人都必须是各自参考图中的同一位真实人物，不是相似人物或融合人物。
 
-严格隔离身份来源：
-[P1] 的身份只能来自第1张参考图。
-[P2] 的身份只能来自第2张参考图。
-[P3] 的身份只能来自第3张参考图。
+Strictly isolate identity sources:
+[P1]''s identity comes only from reference image 1.
+[P2]''s identity comes only from reference image 2.
+[P3]''s identity comes only from reference image 3.
 如有更多人物，[P4]、[P5]、[PN] 也必须分别只来自各自对应参考图。
 
-不要交换任何人的脸、发型、服装、站位、身体、表情或面部朝向。
-不要融合不同人物的五官、脸型、肤色、发型或身体。
-不要让不同人物变成相似脸、模板脸或同一张脸的变体。
+Do not swap anyone''s face, hairstyle, clothing, position, body, expression, or facing direction.
+Do not blend facial features, face shapes, skin tones, hairstyles, or bodies across different people.
+Do not let different people become similar-looking faces, template faces, or variants of the same face.
 
-每个人脸部都必须清晰可见、无遮挡、不过度侧脸、不过远。
+Each person''s face must be clearly visible, unobstructed, not in strong profile, not too far.
 ```
 
 ---
@@ -89,12 +90,14 @@
 ## 脸部变形或不清晰
 
 ```
-问题：脸部变形、不完整、不清晰、五官错位或面部挤压。
-
-请重新生成。人物脸部必须完整、清晰、自然、无遮挡、无变形。
-保持真实人脸结构，五官位置正常，眼睛、鼻子、嘴唇、下颌线清楚可辨。
-避免背脸、强侧脸、过暗光线、过远构图、面部挤压、五官糊成一团或脸部被头发/手/道具遮挡。
-使用更清晰的正脸或轻微侧脸构图，让脸部在画面中占足够比例。
+Repair mode — face clarity:
+Re-generate. Each person''s face must be complete, clear, natural, unobstructed, and undistorted.
+Maintain realistic human facial structure with correctly positioned facial features.
+Eyes, nose, lips, and jawline must be clearly distinguishable.
+Avoid back-facing, strong profile, overly dark lighting, overly distant composition,
+facial compression, facial features blurred together, or face blocked by hair/hands/props.
+Use clearer frontal or slight three-quarter angle framing,
+giving each face sufficient image-area proportion.
 ```
 
 ---
@@ -102,12 +105,12 @@
 ## 脸太小或构图过远
 
 ```
-问题：人物脸部太小、过远，导致不像参考图。
-
-请重新生成，并优先保证脸部清晰度和身份相似度。
-使用近景、中近景或半身构图，避免远景全身构图。
-人物脸部应清晰可见，在画面中占足够比例，五官可辨认。
-不要让脸部被背景、道具、头发、手部、帽檐、墨镜或阴影遮挡。
+Repair mode — face prominence:
+Re-generate. Prioritize face clarity and identity similarity.
+Use close-up, medium close-up, or half-body framing. Avoid distant full-body wide shots.
+Each person''s face should be clearly visible with sufficient image-area proportion
+and distinguishable facial features.
+Do not let faces be obscured by background, props, hair, hands, hat brim, sunglasses, or shadows.
 ```
 
 ---
@@ -115,14 +118,16 @@
 ## 过度美颜或 AI 感
 
 ```
-问题：生成结果过度美颜、AI 感强、塑料皮肤或模板脸。
-
-请重新生成，并降低美化、磨皮、滤镜和模板脸倾向。
-保留真实皮肤纹理、自然毛孔、真实面部细节和自然轻微不对称。
-不要塑料皮肤，不要过度磨皮，不要过度对称。
-不要把眼睛画大，不要加重双眼皮，不要把鼻梁画高，不要把鼻头画挺，
-不要把下巴画尖，不要把脸型画小，不要把肤色画白或画得过度均匀。
-不要朝任何模板化流行审美脸、网红脸、偶像脸、娃娃脸、动漫脸或 V 脸方向修改。
+Repair mode — anti-beautification:
+Re-generate. Reduce beautification, skin smoothing, beauty filters, and template face tendencies.
+Preserve real skin texture, natural pores, real facial details, and subtle natural asymmetry.
+No plastic skin. No over-smoothing. No over-symmetrization.
+Do not make eyes larger. Do not deepen double eyelids.
+Do not raise the nose bridge. Do not sharpen the nose tip.
+Do not sharpen the chin. Do not make the face shape smaller.
+Do not make skin whiter or overly even.
+Do not push toward any templated popular aesthetic direction:
+no influencer face, idol face, doll face, anime face, or V-line face.
 ```
 
 ---
@@ -130,14 +135,15 @@
 ## 发型改变后不像本人
 
 ```
-问题：改变发型后人物不像本人。
+Repair mode — hairstyle change with identity preservation:
+Re-generate. Allow the hairstyle to change but preserve the person''s identity.
+Only change hair length, curl/straight texture, color, styling, or bangs pattern.
+Must preserve hairline, forehead proportions, skull contour, face shape,
+brow relationship, eye shape, nose bridge and tip, lip morphology,
+jawline, cheekbone structure, skin tone type, age impression, and real recognizable identity.
 
-请重新生成。允许改变发型样式，但不能改变人物身份。
-只改变头发的长度、卷直、颜色、造型或刘海样式。
-必须保留发际线、额头比例、头颅轮廓、脸型轮廓、眉眼关系、眼睛形状、
-鼻梁与鼻头、唇形、下颌线、颧骨结构、肤色类型、年龄感和真实辨识度。
-
-不要因为换发型而改变脸型、五官比例、年龄感、肤色类型或整体身份。
+Do not change face shape, facial feature proportions, age impression,
+skin tone type, or overall identity because of a hairstyle change.
 ```
 
 ---
@@ -145,13 +151,12 @@
 ## 年龄感漂移
 
 ```
-问题：生成结果年龄感变了，变得更年轻、更成熟或低龄化。
-
-请重新生成，并保持参考图中的年龄感。
-不要把人物画得更年轻、更幼态、更成熟或更老。
-不要加入幼态脸、娃娃脸、过度嫩化皮肤、过大眼睛或低龄化表情。
-普通换场景/换装任务不要强行改变年龄感。
-涉及亲密、暧昧、性感或暴露场景时，必须先确认所有人物均为成年人。
+Repair mode — age impression preservation:
+Re-generate. Preserve the age impression from the reference photo.
+Do not make the person younger, more baby-faced, more mature, or older.
+Do not add baby face, doll face, overly youthful skin, overly large eyes, or infantilized expressions.
+For normal scene/outfit change tasks, do not force age changes.
+For intimate, suggestive, sexy, or exposed scenes, first confirm all subjects are adults.
 ```
 
 ---
@@ -159,13 +164,14 @@
 ## 风格覆盖了人物身份
 
 ```
-问题：风格化太强，导致人物不像本人。
+Repair mode — style identity separation:
+Re-generate. Reduce the style''s impact on facial identity.
+Style applies only to lighting, color, clothing, background, materials, brushwork, and image texture.
+The style must not change facial features, face shape, skull proportions, hairline,
+skin tone type, age impression, facial bone structure, or identity.
 
-请重新生成，并降低风格对脸部身份的影响。
-风格只作用于光线、色彩、服装、背景、材质、笔触和画面质感。
-风格不能改变人物五官、脸型、头颅比例、发际线、肤色类型、年龄感、面部骨相和身份特征。
-
-即使是插画、动漫、3D、电影感、复古胶片或幻想风格，也必须保留同一位真实人物的可识别脸部特征。
+Even in illustration, anime, 3D, cinematic, vintage film, or fantasy styles,
+the same real person''s recognizable facial features must be preserved.
 ```
 
 ---
@@ -173,16 +179,40 @@
 ## 姿势/服装/风格参考污染身份
 
 ```
-问题：姿势图、服装图、场景图或风格图影响了人物长相。
+Repair mode — reference image separation:
+Re-generate. Strictly isolate reference image purposes:
+人物参考图 only for identity.
+姿势参考图 only for body pose, movement direction, hand placement, and interaction.
+服装参考图 only for clothing style, color, material, cut, and coordination.
+场景参考图 only for environment, background, spatial structure, props, and atmosphere.
+风格参考图 only for color, lighting, texture, composition language, and artistic style.
 
-请重新生成，并严格隔离参考图用途：
-人物参考图只用于身份。
-姿势参考图只用于身体姿态、动作方向、手部位置和互动关系。
-服装参考图只用于服装款式、颜色、材质、剪裁和搭配。
-场景参考图只用于环境、背景、空间结构、道具和氛围。
-风格参考图只用于色彩、光影、质感、构图语言和艺术风格。
+Do not inherit face shape, facial features, skin tone, age impression,
+or identity from pose, clothing, scene, or style reference images.
+```
 
-不要从姿势、服装、场景或风格参考图继承脸型、五官、肤色、年龄感或身份。
+---
+
+## 脸像但很假 / 贴脸感
+
+```
+Repair mode — natural expression adaptation:
+Preserve the same person''s recognizable identity,
+but do not mechanically copy the reference photo expression.
+The person should look like the same real individual naturally photographed in the new scene —
+not the reference face pasted onto a new body or setting.
+
+Preserve identity-level features: face shape, brow relationship, nose structure,
+lip morphology, jawline, cheekbone structure, forehead, skin tone type,
+age impression, and overall personal vibe.
+Allow expression, gaze, eyelids, corners of mouth, cheeks, nostrils, jaw,
+neck muscles, and skin highlights to naturally adapt to the current lighting,
+pose, camera angle, and emotion.
+
+Lower pasted face feel, mask-like face, face-swap feel, and ID-photo stiffness.
+Let facial details blend naturally into the lighting, film texture, soft focus,
+depth of field, and scene atmosphere.
+Identity must be stable. Expression must be alive.
 ```
 
 ---
@@ -190,15 +220,15 @@
 ## 审查不过
 
 ```
-问题：提示词被安全审查拒绝。
+Repair mode — safety compliance:
+保留身份锚定和画面核心意图，删除或改写高风险表达。
+Change nudity, sexy, provocative, bed, strong body contact, body-part emphasis
+into natural group photo, elegant styling, romantic atmosphere, gentle eye contact,
+natural closeness, cinematic lighting, and high-end photographic composition.
 
-请保留身份锚定和画面核心意图，删除或改写高风险表达。
-将裸露、性感、挑逗、床、强身体接触、身体部位强调等描述，
-改为自然合照、优雅造型、浪漫氛围、温柔对视、自然靠近、
-电影感光线、高级摄影构图和时尚表达。
-
-不要加入“不要色情、不要裸露”等容易反向触发审查的负向词串。
-如果人物年龄不明确或偏年轻，不生成亲密、性感、暧昧或暴露场景，先确认均为成年人。
+Do not add negative strings like "no pornography, no nudity" — these may trigger review.
+If the person''s age appears unclear or younger, do not generate intimate,
+sexy, suggestive, or exposed scenes. First confirm all subjects are adults.
 ```
 
 ---
